@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滿州鄉施政滿意度大調查</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="highlight">MANZHOU</span> SURVEY
+            </div>
+            <h1>滿州鄉施政滿意度大調查</h1>
+            <p class="subtitle">您的聲音，是地方進步與發展的最強大動力</p>
+        </header>
+
+        <!-- Main Card Container -->
+        <main class="card-container">
+            <!-- Progress Bar (Hidden on welcome/result pages) -->
+            <div class="progress-container" id="progress-container" style="display: none;">
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">問題 1 / 8</div>
+            </div>
+
+            <!-- Card 0: Welcome -->
+            <div class="card active" id="card-welcome">
+                <div class="card-icon">🦅</div>
+                <h2>歡迎參與鄉政滿意度大調查</h2>
+                <p class="card-description">
+                    滿州鄉坐擁豐富的自然景觀與人文生態，但也面臨國家公園管制、偏鄉醫療、基礎建設與光電開發等重大議題。
+                    本問卷旨在收集鄉親與各界對於近年施政的真實回饋，作為未來規劃的依據。
+                </p>
+                <div class="survey-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">⏱️</span>
+                        <span class="feature-text">預估填寫時間：1 分鐘</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <span class="feature-text">匿名調查，請放心填寫</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btn-start">開始填寫問卷</button>
+            </div>
+            
+            <!-- Card 1: Administration Efficiency -->
+            <div class="card" id="card-q1" data-question="1">
+                <span class="question-category">🏛️ 行政效能與資訊透明</span>
+                <h2>1. 您對滿州鄉公所行政團隊的「服務態度與辦事效率」，以及施政資訊與預算公開透明度是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 2: Healthcare & Long-term Care -->
+            <div class="card" id="card-q2" data-question="2">
+                <span class="question-category">🏥 醫療資源與長照接送</span>
+                <h2>2. 您對鄉內的急診醫療資源、行動巡迴醫療車的普及性，以及長者長照交通接送服務的便利性是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 3: Traffic & Local Roads -->
+            <div class="card" id="card-q3" data-question="3">
+                <span class="question-category">🛣️ 交通改善與道路維護</span>
+                <h2>3. 您對近年聯外道路（如縣道200號拓寬工程）的施工效率、鄉內產業道路修繕及公共路燈照明是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 4: Disaster Prevention & Relocation -->
+            <div class="card" id="card-q4" data-question="4">
+                <span class="question-category">⛈️ 颱風防災與撤村安置</span>
+                <h2>4. 您對颱風防汛期間鄉公所執行的「預防性撤村安全疏散措施」及避難收容所的安置輔導環境是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 5: Kenting National Park -->
+            <div class="card" id="card-q5" data-question="5">
+                <span class="question-category">🌲 墾丁國家公園管制</span>
+                <h2>5. 您對墾丁國家公園在滿州鄉境內的「土地分區管制」及「建築管理限制」等規範是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 6: Jialeshui Scenic Area -->
+            <div class="card" id="card-q6" data-question="6">
+                <span class="question-category">🌊 佳樂水景區營運</span>
+                <h2>6. 您對鄉內指標景點「佳樂水風景區」近年來的硬體設施維護、觀光推廣與委外營運規劃是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 7: Rocket Launch Site - Environment -->
+            <div class="card" id="card-q7" data-question="7">
+                <span class="question-category">🌌 火箭發射場環境評估</span>
+                <h2>7. 您對國家火箭發射場計畫在九棚村設立之「噪音、生態環境衝擊與防護措施」規劃是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-primary btn-next" disabled>下一題</button>
+                </div>
+            </div>
+
+            <!-- Card 8: Rocket Launch Site - Expectations -->
+            <div class="card" id="card-q8" data-question="8">
+                <span class="question-category">🚀 火箭發射場發展期待</span>
+                <h2>8. 您對國家火箭發射場未來可能帶來的「在地經濟效應、太空觀光推廣、創造青年就業與回饋政策」之看法與效益期待是否滿意？</h2>
+                <div class="options-group">
+                    <button class="option-btn" data-value="5">非常滿意</button>
+                    <button class="option-btn" data-value="4">滿意</button>
+                    <button class="option-btn" data-value="3">普通</button>
+                    <button class="option-btn" data-value="2">不滿意</button>
+                    <button class="option-btn" data-value="1">非常不滿意</button>
+                </div>
+                <div class="card-navigation">
+                    <button class="btn btn-secondary btn-prev">上一題</button>
+                    <button class="btn btn-success" id="btn-submit" disabled>送出問卷</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="card" id="card-result">
+                <div class="result-header">
+                    <div class="success-icon">🎉</div>
+                    <h2>問卷已成功提交！</h2>
+                    <p id="result-subtitle">感謝您的參與，您的回饋已送達後端系統。</p>
+                    <div class="admin-badge" id="admin-badge" style="display: none;">🔑 管理員檢視模式</div>
+                </div>
+
+                <div id="user-thank-you-msg" class="thank-you-message" style="text-align: center; margin-bottom: 24px; color: var(--text-gray); line-height: 1.6;">
+                    <p>您的聲音已被安全記錄。我們將持續彙整鄉民意見，協助滿州鄉在觀光、基礎建設、生態保護及社會福利上持續進步。</p>
+                </div>
+
+                <div id="admin-charts-section" style="display: none;">
+                    <div class="chart-section">
+                        <h3>💡 各領域施政滿意度（滿分 5.0）</h3>
+                        <div class="charts-container" id="bar-charts">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <h3>📊 全體受訪者滿意分佈率</h3>
+                        <div class="pie-chart-wrapper">
+                            <div class="pie-chart" id="pie-chart"></div>
+                            <div class="chart-legend" id="pie-legend">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-footer">
+                    <button class="btn btn-primary" id="btn-restart">重新填寫問卷</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2026 滿州鄉施政滿意度大調查小組 &bull; 本網頁由 AI Agent 協同設計開發
+        </footer>
+    </div>
+
+    <script src="survey.js"></script>
+</body>
+</html>
