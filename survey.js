@@ -250,67 +250,76 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         });
 
-        // 3. Calculate Satisfaction Distribution Rate (for Q1 Overall Satisfaction / Admin efficiency)
-        const distribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
-        allRecords.forEach(rec => {
-            distribution[rec.q1]++;
+        // 3. Render Distribution Pie Charts for EVERY question
+        const pieChartsGrid = document.getElementById('pie-charts-grid');
+        pieChartsGrid.innerHTML = '';
+        
+        Object.keys(categories).forEach(k => {
+            const cat = categories[k];
+            
+            const distribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+            allRecords.forEach(rec => {
+                distribution[rec[k]]++;
+            });
+            
+            const rates = {
+                vs: ((distribution[5] / totalCount) * 100),
+                s: ((distribution[4] / totalCount) * 100),
+                n: ((distribution[3] / totalCount) * 100),
+                u: ((distribution[2] / totalCount) * 100),
+                vu: ((distribution[1] / totalCount) * 100)
+            };
+            
+            const vsEnd = rates.vs;
+            const sEnd = vsEnd + rates.s;
+            const nEnd = sEnd + rates.n;
+            const uEnd = nEnd + rates.u;
+            
+            const gradientStr = `
+                #059669 0% ${vsEnd.toFixed(1)}%, 
+                #10b981 ${vsEnd.toFixed(1)}% ${sEnd.toFixed(1)}%, 
+                #34d399 ${sEnd.toFixed(1)}% ${nEnd.toFixed(1)}%, 
+                #f59e0b ${nEnd.toFixed(1)}% ${uEnd.toFixed(1)}%, 
+                #ef4444 ${uEnd.toFixed(1)}% 100%
+            `;
+            
+            const pieContainer = document.createElement('div');
+            pieContainer.className = 'question-pie-container';
+            pieContainer.innerHTML = `
+                <div class="question-pie-title">${cat.label}</div>
+                <div class="pie-chart-wrapper">
+                    <div class="pie-chart" style="--pie-segments: ${gradientStr};"></div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #059669;"></div>
+                            <div class="legend-label">非常滿意:</div>
+                            <div class="legend-percent">${rates.vs.toFixed(1)}%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #10b981;"></div>
+                            <div class="legend-label">滿意:</div>
+                            <div class="legend-percent">${rates.s.toFixed(1)}%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #34d399;"></div>
+                            <div class="legend-label">普通:</div>
+                            <div class="legend-percent">${rates.n.toFixed(1)}%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #f59e0b;"></div>
+                            <div class="legend-label">不滿意:</div>
+                            <div class="legend-percent">${rates.u.toFixed(1)}%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #ef4444;"></div>
+                            <div class="legend-label">非常不滿意:</div>
+                            <div class="legend-percent">${rates.vu.toFixed(1)}%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            pieChartsGrid.appendChild(pieContainer);
         });
-        
-        const rates = {
-            verySatisfied: ((distribution[5] / totalCount) * 100),
-            satisfied: ((distribution[4] / totalCount) * 100),
-            neutral: ((distribution[3] / totalCount) * 100),
-            unsatisfied: ((distribution[2] / totalCount) * 100),
-            veryUnsatisfied: ((distribution[1] / totalCount) * 100)
-        };
-        
-        // Update conic-gradient for Pie Chart
-        // Colors: Very Satisfied (#059669), Satisfied (#10b981), Neutral (#34d399), Unsatisfied (#f59e0b), Very Unsatisfied (#ef4444)
-        const vsEnd = rates.verySatisfied;
-        const sEnd = vsEnd + rates.satisfied;
-        const nEnd = sEnd + rates.neutral;
-        const uEnd = nEnd + rates.unsatisfied;
-        
-        const gradientStr = `
-            #059669 0% ${vsEnd.toFixed(1)}%, 
-            #10b981 ${vsEnd.toFixed(1)}% ${sEnd.toFixed(1)}%, 
-            #34d399 ${sEnd.toFixed(1)}% ${nEnd.toFixed(1)}%, 
-            #f59e0b ${nEnd.toFixed(1)}% ${uEnd.toFixed(1)}%, 
-            #ef4444 ${uEnd.toFixed(1)}% 100%
-        `;
-        
-        const pieChart = document.getElementById('pie-chart');
-        pieChart.style.setProperty('--pie-segments', gradientStr);
-        
-        // Render Legend
-        const legendContainer = document.getElementById('pie-legend');
-        legendContainer.innerHTML = `
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #059669;"></div>
-                <div class="legend-label">非常滿意:</div>
-                <div class="legend-percent">${rates.verySatisfied.toFixed(1)}%</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #10b981;"></div>
-                <div class="legend-label">滿意:</div>
-                <div class="legend-percent">${rates.satisfied.toFixed(1)}%</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #34d399;"></div>
-                <div class="legend-label">普通:</div>
-                <div class="legend-percent">${rates.neutral.toFixed(1)}%</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #f59e0b;"></div>
-                <div class="legend-label">不滿意:</div>
-                <div class="legend-percent">${rates.unsatisfied.toFixed(1)}%</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background-color: #ef4444;"></div>
-                <div class="legend-label">非常不滿意:</div>
-                <div class="legend-percent">${rates.veryUnsatisfied.toFixed(1)}%</div>
-            </div>
-        `;
     }
 
     // Reset survey

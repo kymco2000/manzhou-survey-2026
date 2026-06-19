@@ -442,22 +442,50 @@ header h1 {
 }
 
 /* Pie Chart using conic-gradient */
+.pie-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.question-pie-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.question-pie-title {
+    font-size: 0.9rem;
+    color: var(--primary-green);
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
 .pie-chart-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    gap: 24px;
+    justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .pie-chart {
-    width: 140px;
-    height: 140px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.1);
     background: conic-gradient(var(--pie-segments, var(--bg-dark) 0% 100%));
     box-shadow: 0 0 16px rgba(16, 185, 129, 0.15);
-    transition: background 0.8s ease;
+    flex-shrink: 0;
 }
 
 .chart-legend {
