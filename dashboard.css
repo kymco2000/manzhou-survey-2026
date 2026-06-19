@@ -1,0 +1,115 @@
+/* dashboard.css */
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.kpi-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    transition: transform 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.kpi-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.kpi-title {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.kpi-value {
+    font-size: 2.4rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--text-white);
+    margin-bottom: 4px;
+}
+
+.kpi-value.highlight {
+    color: var(--emerald-light);
+}
+
+.kpi-value.warning {
+    color: #f59e0b;
+}
+
+.kpi-subtext {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Dashboard Sections */
+.dashboard-section {
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+}
+
+.section-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 24px;
+    border-left: 4px solid var(--primary-green);
+    padding-left: 12px;
+}
+
+.dashboard-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px 16px;
+    }
+    .kpi-card {
+        padding: 20px;
+    }
+    .dashboard-section {
+        padding: 24px 16px;
+    }
+}

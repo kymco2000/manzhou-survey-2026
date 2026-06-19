@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滿州鄉施政滿意度大調查 - 數據儀表板</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="survey.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <span class="highlight">MANZHOU</span> SURVEY DASHBOARD
+            </div>
+            <h1>滿意度即時數據中心</h1>
+            <p class="subtitle">即時掌握鄉親施政回饋與滿意度分佈</p>
+        </header>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">👥</div>
+                <div class="kpi-title">總填寫人次</div>
+                <div class="kpi-value" id="kpi-total-users">--</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">⭐</div>
+                <div class="kpi-title">最高滿意度項目</div>
+                <div class="kpi-value highlight" id="kpi-highest-cat">--</div>
+                <div class="kpi-subtext" id="kpi-highest-score">-- / 5.0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">💡</div>
+                <div class="kpi-title">優先改善項目</div>
+                <div class="kpi-value warning" id="kpi-lowest-cat">--</div>
+                <div class="kpi-subtext" id="kpi-lowest-score">-- / 5.0</div>
+            </div>
+        </div>
+
+        <!-- Detailed Distributions (Pie Charts) -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>📊 個別題目滿意度詳細分佈</h2>
+            </div>
+            <div class="pie-charts-grid" id="dashboard-pie-grid">
+                <!-- Filled by dashboard.js -->
+            </div>
+        </div>
+
+        <!-- Average Bar Charts -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>📈 各領域施政平均滿意度比較</h2>
+            </div>
+            <div class="charts-container" id="dashboard-bar-charts">
+                <!-- Filled by dashboard.js -->
+            </div>
+        </div>
+
+        <!-- Footer actions -->
+        <div class="dashboard-footer">
+            <a href="index.html" class="btn btn-secondary">返回問卷首頁</a>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
